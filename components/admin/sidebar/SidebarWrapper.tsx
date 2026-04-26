@@ -6,14 +6,19 @@ import { AppSidebar } from "@/components/ui/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils"
 import NavbarSidebar from "./NavbarSidebar";
-import { UserAdmin } from "@/app/generated/prisma/client";
+
+interface UserInterface{
+  name: string
+  email: string
+  address: string
+}
 
 export default function SidebarWrapper({
   children,
   user
 }: {
   children: React.ReactNode;
-  user: UserAdmin
+  user: UserInterface
 }) {
   const [open, setOpen] = React.useState(true);
 
