@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     } catch (error: any) {
         console.log('error adalah ', error)
         if (error.name === "ZodError") {
-            return NextResponse.json({ error: "AI return invalid data structure", details: error.errors }, { status: 422 });
+            return NextResponse.json({ error: "AI return invalid data structure", message: "Dokumen tidak valid" }, { status: 422 });
         }
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
