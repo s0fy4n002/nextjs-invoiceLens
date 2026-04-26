@@ -5,12 +5,16 @@ import {
   GenerateContentResponse,
 } from "@google/genai";
 
-import { z } from "zod";
-import { InvoiceSchema } from "../validations/invoiceValidation";
-
 const prompt = `
   Kamu adalah ahli ekstraksi data invoice. 
-  Ekstrak data dari dokumen ini ke dalam format JSON yang valid:
+  Tugas pertama: Analisis apakah gambar ini adalah invoice, faktur, atau struk belanja.
+  
+  Kriteria Invoice: Ada nama toko, daftar barang/jasa, dan total harga.
+
+  Jika gambar BUKAN invoice (misal: foto orang, pemandangan, dokumen lain):
+  Keluarkan JSON: { "isInvoice": false }
+  Jika gambar ADALAH invoice, keluarkan JSON:
+  
   {
     "id": string (ambil dari nomor invoice/faktur),
     "storeName": string,
