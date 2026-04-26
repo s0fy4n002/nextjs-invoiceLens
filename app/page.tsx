@@ -2,6 +2,8 @@ import InvoiceList from "@/components/invoices/InvoiceList";
 import UploadForm from "@/components/invoices/UploadForm";
 import { prisma } from "@/lib/prisma";
 
+export const revalidate = 0
+
 // Fungsi untuk ambil data dari Prisma
 async function getInvoices() {
   return await prisma.invoice.findMany({
